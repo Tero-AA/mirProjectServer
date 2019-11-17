@@ -1,7 +1,7 @@
 const categoryModel = require('../models/categories');
 module.exports = {
-  updateByName: function (req, res, next) {
-    categoryModel.findByIdAndUpdate(req.params.name, { name: req.body.name }, function (err, categoryInfo) {
+  updateById: function (req, res, next) {
+    categoryModel.findByIdAndUpdate(req.params.id, { name: req.body.name }, function (err, categoryInfo) {
       if (err)
         next(err);
       else {
@@ -10,7 +10,7 @@ module.exports = {
     });
   },
   deleteById: function (req, res, next) {
-    categoryModel.find({ name: req.params.name }, function (err, categoryInfo) {
+    categoryModel.deleteOne({ _id: req.params.id }, function (err, categoryInfo) {
       if (err)
         next(err);
       else {

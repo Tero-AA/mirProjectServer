@@ -20,7 +20,7 @@ module.exports = {
     });
   },
   deleteByUserId: function (req, res, next) {
-    cartModel.findByIdAndRemove(req.params.userId, function (err, cartInfo) {
+    cartModel.deleteMany({ userId: req.params.userId }, function (err, cartInfo) {
       if (err)
         next(err);
       else {
@@ -29,7 +29,7 @@ module.exports = {
     });
   },
   create: function (req, res, next) {
-    cartModel.create({ userId: req.body.userId, productId: req.body.userId, quantity: req.body.quantity }, function (err, result) {
+    cartModel.create({ userId: req.body.userId, productId: req.body.productId, quantity: req.body.quantity }, function (err, result) {
       if (err)
         next(err);
       else

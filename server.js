@@ -68,32 +68,5 @@ app.use(function (err, req, res, next) {
   else
     res.status(500).json({ message: "Something looks wrong :( !!!" });
 });
-//Schemas and Models
-
-
-// const favoritesSchema = mongoose.Schema({
-//   userId: {
-//     type: String,
-//     required: [true, "is required"]
-//   },
-//   productId: {
-//     type: String,
-//     required: [true, "is required"]
-//   }
-// });
-
-// const Favorites = mongoose.model("Favorites", favoritesSchema);
-
-
-// const categoriesSchema = mongoose.Schema({
-//   name: String,
-//   createAt: { type: Date, default: Date.now },
-//   createdBy: {
-//     type: String,
-//     required: true
-//   }
-// })
-
-
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}!`))

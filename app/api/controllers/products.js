@@ -2,7 +2,7 @@ const productModel = require('../models/products');
 module.exports = {
   getByCategory: function (req, res, next) {
     console.log(req.body);
-    productModel.find({ category: req.params.category }, function (err, productInfo) {
+    productModel.find({ categoryId: req.params.categoryId }, function (err, productInfo) {
       if (err) {
         next(err);
       } else {
@@ -12,11 +12,11 @@ module.exports = {
   },
   updateById: function (req, res, next) {
     productModel.findByIdAndUpdate(req.params.productId, {
-      name: req.body.name,
+      productName: req.body.productName,
+      description: req.body.description,
       brand: req.body.brand,
       price: req.body.price,
-      description: req.body.description,
-      category: req.body.category,
+      categoryId: req.body.categoryId,
     },
       function (err, productInfo) {
         if (err)
@@ -37,20 +37,19 @@ module.exports = {
   },
   create: function (req, res, next) {
     productModel.create({
-      name: req.body.name,
-      brand: req.body.brand,
-      price: req.body.price,
       description: req.body.description,
+      price: req.body.price,
       picture: req.body.picture,
-      category: req.body.category,
-      createdBy: req.body.createdBy
+      productName: req.body.productName,
+      brand: req.body.brand,
+      categoryId: req.body.categoryId,
+      createdBy: req.body.createdBy,
     },
       function (err, result) {
         if (err)
           next(err);
         else
           res.json({ status: "success", message: "product added successfully!!!", data: null });
-
       });
-  },
+  }
 }

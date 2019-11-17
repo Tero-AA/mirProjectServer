@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 //Define a schema
 const Schema = mongoose.Schema;
-const productSchema = new Schema({
+const ProductSchema = new Schema({
   description: {
     type: String,
     trim: true,
@@ -17,7 +17,7 @@ const productSchema = new Schema({
     trim: true,
     required: true
   },
-  name: {
+  productName: {
     type: String,
     trim: true,
     required: true
@@ -27,7 +27,7 @@ const productSchema = new Schema({
     trim: true,
     required: true
   },
-  category: {
+  categoryId: {
     type: String,
     trim: true,
     required: true
@@ -35,4 +35,4 @@ const productSchema = new Schema({
   createAt: { type: Date, trim: true, default: Date.now },
   createBy: { type: String, trim: true },
 });
-module.exports = mongoose.model('product', productSchema)
+module.exports = mongoose.model('Product', ProductSchema)
